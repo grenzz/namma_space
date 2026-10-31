@@ -15,7 +15,7 @@ export function useVenue(venueId?: string): VenueState {
     const controller = new AbortController()
     setState({ status: "loading" })
 
-    fetch(assetUrl(`/venues/${venueId}/config.json`, { signal: controller.signal }))
+    fetch(assetUrl(`/venues/${venueId}/config.json`), { signal: controller.signal })
       .then((res) => {
         if (!res.ok) throw new Error("Venue not found")
         return res.json() as Promise<VenueConfig>

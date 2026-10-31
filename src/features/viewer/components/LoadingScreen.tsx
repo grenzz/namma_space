@@ -47,6 +47,8 @@ const RIPPLE_LIFE = 1500; // ms
 const RIPPLE_BAND = 60; // thickness of the shockwave in px
 const MAX_RIPPLES = 6;
 const TEXT_DIM_FLOOR = 0.3; // how much the cloud is dimmed behind the text (1 = no dimming)
+const TIME_FLOOR_MAX = 0.7; // the room always forms at least this far on its own clock
+const TIME_FLOOR_MS = 2500; // ...over this many milliseconds
 
 function createRandom(seed = 7419) {
   let value = seed;
@@ -261,6 +263,7 @@ export default function LoadingScreen({
     let shown = 0;
     let lastTime = 0;
     let lastMeasure = -Infinity;
+    const startedAt = performance.now();
 
     // Camera sway, eased toward its target every frame.
     const cam = { x: 0, y: 0 };
@@ -357,12 +360,16 @@ export default function LoadingScreen({
         measureZone();
       }
 
-      // Load progress easing (frame-rate independent).
-      const target = progressRef.current;
+      // Reveal progress. The room forms on its own clock so the screen is never empty,
+      // and the real download progress takes over once it is ahead of that clock.
+      const elapsed = time - startedAt;
+      const timeFloor = Math.min(TIME_FLOOR_MAX, elapsed / TIME_FLOOR_MS);
+      const real = progressRef.current;
+      const target = real === null ? 1 : Math.max(timeFloor, real);
       if (reduced) {
-        shown = target ?? 1;
+        shown = 1;
       } else {
-        shown += ((target ?? 1) - shown) * (1 - Math.exp(-dt / 260));
+        shown += (target - shown) * (1 - Math.exp(-dt / 260));
       }
       const lineFade = Math.min(1, shown * 1.4);
 

@@ -7,12 +7,6 @@ import LoadingScreen from "./LoadingScreen"
 import ControlsHint from "./ControlsHint"
 import type { VenueConfig } from "@/features/venues/types"
 
-// Temporary: artificially keeps the loading screen up so you can preview it.
-// Set to 0 to disable. Remove before shipping.
-const DEBUG_LOADER_DELAY_MS = 5000
-
-const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))
-
 export default function ViewerCanvas({ config }: { config: VenueConfig }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [loadedSplat, setLoadedSplat] = useState<SplatMesh | null>(null)

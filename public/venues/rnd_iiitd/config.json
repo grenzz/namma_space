@@ -1,7 +1,7 @@
 {
   "id": "rnd_iiitd",
   "name": "R&D @ IIITD",
-  "modelUrl": "/venues/rnd_iiitd/model.ply",
+  "modelUrl": "/venues/rnd_iiitd/model.compressed.ply",
   "rotation": [178, -196, 9],
   "scale": 1.5,
   "position": [0, 0.85, 0], 
