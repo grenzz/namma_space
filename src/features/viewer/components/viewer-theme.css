@@ -1,0 +1,121 @@
+:root {
+  --nm-bg: rgba(5, 14, 14, 0.78);
+  --nm-border: rgba(94, 234, 212, 0.22);
+  --nm-accent: #5eead4;
+  --nm-text: #e6f4f1;
+  --nm-muted: #8fb0aa;
+}
+
+.nm-glass {
+  font-family: "Geist Variable", system-ui, sans-serif;
+  color: var(--nm-text);
+  background: var(--nm-bg);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid var(--nm-border);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.nm-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--nm-muted);
+}
+
+.nm-value {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--nm-accent);
+}
+
+.nm-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 7px;
+  font: 600 11px "Geist Variable", system-ui, sans-serif;
+  color: var(--nm-text);
+  background: rgba(94, 234, 212, 0.08);
+  border: 1px solid var(--nm-border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+}
+
+.nm-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    var(--nm-accent) var(--p, 50%),
+    rgba(255, 255, 255, 0.15) var(--p, 50%)
+  );
+}
+.nm-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #05100f;
+  border: 2px solid var(--nm-accent);
+  box-shadow: 0 0 10px rgba(94, 234, 212, 0.55);
+}
+.nm-range::-moz-range-thumb {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #05100f;
+  border: 2px solid var(--nm-accent);
+}
+
+.nm-input {
+  width: 100%;
+  padding: 6px 10px;
+  font: 500 12px "Geist Variable", system-ui, sans-serif;
+  color: var(--nm-text);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--nm-border);
+  border-radius: 8px;
+  outline: none;
+}
+.nm-input:focus {
+  border-color: var(--nm-accent);
+  box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.15);
+}
+
+.nm-switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 30px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  transition: background 0.2s;
+}
+.nm-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e6f4f1;
+  transition: transform 0.2s;
+}
+.nm-switch[data-on="true"] {
+  background: var(--nm-accent);
+}
+.nm-switch[data-on="true"]::after {
+  transform: translateX(14px);
+  background: #05100f;
+}
