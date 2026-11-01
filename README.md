@@ -2,9 +2,8 @@
 
 Turn **one smartphone walkthrough video** of an indoor space into a photorealistic 3D model that anyone can walk through in a web browser: no manual 3D modelling, nothing to install for the viewer.
 
-- **Live viewer:** **TODO: paste the GitHub Pages link here**
+- **Live viewer:** **http://grenzz.github.io/namma_space/**
 - **Reconstruction engine:** [`Image_to_3D/`](Image_to_3D/): video → frames → COLMAP → OpenSplat (3D Gaussian Splatting) → `model.ply`
-- **Web viewer:** **TODO: viewer folder name**: Three.js + Spark, WASD + mouse look, collision against walkable/obstacle polygons
 
 ## How it works
 
@@ -76,18 +75,17 @@ The model is written to `scene_*/model.ply`. The number after the scene name is 
 
 ## Large scenes (cell-based training)
 
-**TODO: add the exact `split_cells.py` and `merge_cells.py` commands.** Very large floors are split into spatial cells on the floor plane, each cell is trained independently, and the results are merged by keeping, for every Gaussian, only the cell whose centroid is nearest.
+Very large floors are split into spatial cells on the floor plane, each cell is trained independently, and the results are merged by keeping, for every Gaussian, only the cell whose centroid is nearest. This is done using the two scripts - split_cells.py and merge_cells.py 
 
 ## Web viewer
 
-Run from the viewer folder (**TODO: folder name**):
+Run from the viewer folder:
 
 ```bash
 bun install && bun run dev
 ```
 
 - A venue is pure data under `public/venues/<id>/`: the splat plus a `config.json` (model rotation, scale, position, floor height, spawn point, player radius, `walkable` and `obstacles` polygons). Adding a venue needs no code change. Open it at `/#/<venueId>`.
-- The trained `.ply` is converted to `model.compressed.ply` before it is served. **TODO: the exact command or tool used for this conversion.**
 - GitHub Actions builds and deploys the viewer to GitHub Pages on every push to `main`. Models are stored with Git LFS.
 - Controls: click to capture the mouse, WASD to move, Shift to sprint. In the dev build, `P` logs the spawn coordinates, `C` adds a polygon corner, `X` undoes, `V` prints the polygon.
 
