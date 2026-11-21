@@ -20,7 +20,9 @@ export function useVenue(venueId?: string): VenueState {
         if (!res.ok) throw new Error("Venue not found")
         return res.json() as Promise<VenueConfig>
       })
-      .then((config) => setState({ status: "ready", config }))
+      .then((config) =>
+        setState({ status: "ready", config: { ...config, pois: config.pois ?? [] } }),
+      )
       .catch((err: Error) => {
         if (err.name !== "AbortError") {
           setState({ status: "error", message: "Venue not found" })

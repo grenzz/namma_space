@@ -5,6 +5,8 @@ import { loadSplat } from "../engine/loadSplat"
 import DebugPanel from "./DebugPanel"
 import LoadingScreen from "./LoadingScreen"
 import ControlsHint from "./ControlsHint"
+import Crosshair from "./Crosshair"
+import PoiCard from "./PoiCard"
 import type { VenueConfig } from "@/features/venues/types"
 
 export default function ViewerCanvas({ config }: { config: VenueConfig }) {
@@ -82,7 +84,13 @@ export default function ViewerCanvas({ config }: { config: VenueConfig }) {
         />
       )}
 
-      {loadedSplat && loaderGone && <ControlsHint />}
+      {loadedSplat && loaderGone && (
+        <>
+          <ControlsHint />
+          <Crosshair />
+          <PoiCard pois={config.pois} />
+        </>
+      )}
 
       {import.meta.env.DEV && loadedSplat && (
         <DebugPanel

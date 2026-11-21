@@ -5,6 +5,7 @@ const rows: { keys: string[]; label: string }[] = [
   { keys: ["W", "A", "S", "D"], label: "Move" },
   { keys: ["Mouse"], label: "Look around" },
   { keys: ["Shift"], label: "Sprint" },
+  { keys: ["E"], label: "Inspect what you look at" },
   { keys: ["Esc"], label: "Release cursor" },
 ]
 

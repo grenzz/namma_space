@@ -3,6 +3,7 @@ import { SparkRenderer } from "@sparkjsdev/spark";
 import { createMovement } from "./movement";
 import { createRecorder } from "./recorder";
 import { createPolygonLine } from "./debugDraw";
+import { createPoiLayer } from "./poiLayer";
 import type { VenueConfig } from "@/features/venues/types";
 import Stats from "three/examples/jsm/libs/stats.module.js";
 import { useOverlayStore } from "@/features/viewer/store/overlayStore";
@@ -46,6 +47,8 @@ export function createScene(
       radius: config.playerRadius,
     },
   });
+
+  const poiLayer = createPoiLayer(container, camera, config);
 
   // ---- Debug overlays: always created, hidden by default, toggled from the panel ----
   const grid = new THREE.GridHelper(20, 20);
@@ -92,6 +95,7 @@ export function createScene(
     const dt = Math.min((time - last) / 1000, 0.05);
     last = time;
     movement.update(dt);
+    poiLayer.update();
     stats.update();
     renderer.render(scene, camera);
   });
@@ -101,6 +105,7 @@ export function createScene(
     window.removeEventListener("resize", onResize);
     unsubscribeOverlays();
     stopRecorder?.();
+    poiLayer.dispose();
     movement.dispose();
     renderer.dispose();
     renderer.domElement.remove();

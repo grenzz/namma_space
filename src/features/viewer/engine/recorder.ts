@@ -15,6 +15,11 @@ export function createRecorder(camera: THREE.PerspectiveCamera) {
       points.pop()
       console.log(`Last point removed, ${points.length} left`)
     }
+    if (e.code === "KeyO") {
+      const x = camera.position.x.toFixed(2)
+      const z = camera.position.z.toFixed(2)
+      console.log(`{ "id": "", "name": "", "category": "", "position": [${x}, ${z}] },`)
+    }
     if (e.code === "KeyV") {
       console.log(JSON.stringify(points))
       points.length = 0

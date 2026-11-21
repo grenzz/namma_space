@@ -6,7 +6,7 @@ export interface CollisionMap {
   radius: number
 }
 
-function pointInPolygon(x: number, z: number, poly: Vec2[]): boolean {
+export function pointInPolygon(x: number, z: number, poly: Vec2[]): boolean {
   let inside = false
   for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
     const [xi, zi] = poly[i]

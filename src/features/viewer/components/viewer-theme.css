@@ -119,3 +119,80 @@
   transform: translateX(14px);
   background: #05100f;
 }
+.nm-tag {
+  padding: 2px 8px;
+  font: 600 10px "Geist Variable", system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--nm-accent);
+  background: rgba(94, 234, 212, 0.08);
+  border: 1px solid var(--nm-border);
+  border-radius: 999px;
+}
+
+.nm-poi-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nm-poi {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.nm-poi-label {
+  padding: 3px 9px;
+  font: 600 11px "Geist Variable", system-ui, sans-serif;
+  white-space: nowrap;
+  color: var(--nm-text);
+  background: var(--nm-bg);
+  border: 1px solid var(--nm-border);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nm-poi-dot {
+  order: 2;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--nm-accent);
+  box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.25), 0 0 14px rgba(94, 234, 212, 0.7);
+  transition: transform 0.15s;
+}
+
+.nm-poi:hover .nm-poi-dot,
+.nm-poi[data-selected="true"] .nm-poi-dot {
+  transform: scale(1.35);
+}
+
+.nm-poi[data-selected="true"] .nm-poi-label {
+  color: #05100f;
+  background: var(--nm-accent);
+}
+
+.nm-crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: rgba(230, 244, 241, 0.85);
+  box-shadow: 0 0 0 1px rgba(5, 16, 15, 0.6);
+  pointer-events: none;
+}

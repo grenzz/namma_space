@@ -32,5 +32,38 @@
     [[2.16,-1.82],[2.5,-1.65],[3.08,-1.84],[2.83,-2.46],[2.4,-2.24]],
     [[-2.8,-1.82],[-2.94,-2.43],[-3.37,-2.46],[-3.6,-2.21],[-3.79,-1.56],[-3.15,-1.37]],
     [[-0.22,1.37],[0.02,1.6],[-0.18,1.84],[-0.58,1.72]]
+  ],
+  "pois": [
+    {
+      "id": "sample_a",
+      "name": "Sample Spot A",
+      "category": "placeholder",
+      "tags": ["sample"],
+      "position": [-5, 2],
+      "zone": [[-6, 1], [-4, 1], [-4, 3], [-6, 3]]
+    },
+    {
+      "id": "sample_b",
+      "name": "Sample Spot B",
+      "category": "placeholder",
+      "tags": ["sample"],
+      "position": [4.5, 0],
+      "zone": [[3.5, -1], [5.5, -1], [5.5, 1], [3.5, 1]]
+    },
+    {
+      "id": "sample_c",
+      "name": "Sample Spot C",
+      "category": "placeholder",
+      "tags": ["sample"],
+      "position": [0, -4]
+    },
+    {
+      "id":"Reception",
+      "name":"Reception @ RnD",
+      "category":"testing",
+      "tags":["test_sample"],
+      "position":[-0.33,1.09],
+      "zone":[[1.31,1.43],[-0.64,0.11],[-1.48,1.4],[0.23,2.95]]
+    }
   ]
 }

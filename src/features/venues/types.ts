@@ -7,6 +7,19 @@ export interface VenueSummary {
   thumbnail: string
 }
 
+export interface Poi {
+  id: string
+  name: string
+  category: string
+  tags?: string[]
+  /** Floor position [x, z] in world space, the same frame as walkable and obstacles */
+  position: Vec2
+  /** Optional outline [x, z] of the room or zone this POI names */
+  zone?: Vec2[]
+  /** Height of the pin above the floor, defaults to 1.2 */
+  pinHeight?: number
+}
+
 export interface VenueConfig {
   id: string
   name: string
@@ -19,4 +32,5 @@ export interface VenueConfig {
   playerRadius: number
   walkable: Vec2[]
   obstacles: Vec2[][]
+  pois: Poi[]
 }
